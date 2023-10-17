@@ -40,3 +40,57 @@ var questionIndex = 0;
 var questionEl = document.getElementById("question");
 var choiceButtons = document.querySelectorAll("multiple-choice button");
 var score = 0;
+var scoreDispEL = document.getElementById("score-dsiplay");
+function populateQuestion() {
+    questionEl.textContent = questionList[questionIndex].question;
+    for (var i = 0; i < choiceButtons.length; i++) {
+        choiceButtons[i].textContent = questionList[questionIndex].choices[i];
+        
+    }
+
+}; // this creates a function to populate the html multiple choice section with the data from the question list variable 
+
+for ( var i = 0; i < choiceButtons.length; i++) {
+    choiceButtons[i].addEventListener("click", function () {
+        if (this.textContent === questionList[questionIndex].correct) {
+            score++;
+            answerAlertEl.textContent = "correct"
+        } else {
+            timerCounter -= 5 
+            answerAlertEl.textContent = "incorrect" //knocks down score by 5 if incorrect anser is given
+        }
+        setTimeout(function(){
+            answerAlertEl.textContent = ""
+
+        },1000) //creates a limited window for alert messages to appear.
+        questionIndex++;
+        if(questionIndex === questionList.length) {
+            endQuiz();
+        } else {
+            populateQuestion();
+        } //manages whether to move on to the next question or end quiz based on questions left
+    });
+    
+}
+
+
+function endQuiz() {
+    clearInterval(timerObject);
+    multiplechoiceEl.style.display = 'none';
+    highScoreFormEL.style.display = "block";
+    document.getElementById("score-display").innerText = "Your score is:" + timerCounter
+} //ends the quiz and shows the final score
+
+startButtonEL.addEventListener("click", function () {
+    timerObject = setInterval(function () {
+        timerEL.innerText = "Time Left: " + timerCounter;
+        if (timerCounter > 0) {
+            timerCounter--;
+        } else {
+            endQuiz();
+        }
+    },1000);
+    populateQuestion();
+    multiplechoiceEl.style.display = "block";
+    startButtonEL.style.display = "none";
+}) //starts the quiz and displays the multiple choice quiz while hiding the start button
