@@ -69,7 +69,7 @@ for ( var i = 0; i < choiceButtons.length; i++) {
         } else {
             populateQuestion();
         } //manages whether to move on to the next question or end quiz based on questions left
-    });
+    }); 
     
 }
 
@@ -94,3 +94,14 @@ startButtonEL.addEventListener("click", function () {
     multiplechoiceEl.style.display = "block";
     startButtonEL.style.display = "none";
 }) //starts the quiz and displays the multiple choice quiz while hiding the start button
+
+document.getElementById("save-user-score").addEventListener("click",function(){
+    var user = document.getElementById("user-input").value 
+    var scoreBoard = JSON.parse(localStorage.getItem("codeQuiz")) || []
+    scoreBoard.push ({
+        user:user,
+        score: timerCounter + score
+    })
+    localStorage.setItem("codeQuiz",JSON.stringify(scoreBoard))
+
+}) //saves a players score and name to local storage
