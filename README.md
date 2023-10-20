@@ -16,7 +16,7 @@ Used to test users on some basic knowledge for coding.
 Please refer to license in the repo.
 
 ## Website URL:
-
+https://evanrc.github.io/Wired-Code-Exam/
 
 ## Code ScreenShot:
 ![image](https://github.com/EvanRC/Wired-Code-Exam/assets/124648885/b6b29376-48c8-425e-9008-3fe4ff9c307e)
