@@ -31,14 +31,14 @@ var questionList = [
     },
     {
         question:"what is a for loop?",
-        choices: ["A racetrack", "A programming tool to complete a set of insructions a fixed amount of times", "A type of knot", "A math equation often used in the realm of quantum physics"],
-        correct: "A programming tool to complete a set of instructions a fixed amount of times"
+        choices: ["A racetrack", "A programming tool to complete a set of insructions in a fixed amount of times", "A type of knot", "A math equation often used in the realm of quantum physics"],
+        correct: "A programming tool to complete a set of instructions a in fixed amount of times"
     }
 ]; //creates a list of questons for the quiz and their answeres, plus it specifies the correct answer
 
 var questionIndex = 0; 
 var questionEl = document.getElementById("question");
-var choiceButtons = document.querySelectorAll("multiple-choice button");
+var choiceButtons = document.querySelectorAll("#multiple-choice button");
 var score = 0;
 var scoreDispEL = document.getElementById("score-dsiplay");
 function populateQuestion() {
